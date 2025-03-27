@@ -10,7 +10,7 @@ function HomePage() {
         <div className="container mx-auto ">
           <h1 className="text-5xl font-bold mb-6">Kaml Mehamednur</h1>
           <p className="text-xl mb-4">
-            Software Engineer | Problem Solver | Innovator
+            Software Engineer | Problem Solver | Designer (UI/UX)
           </p>
         </div>
       </section>
