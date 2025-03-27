@@ -18,6 +18,7 @@ function BookReviewListPage() {
     impressions: "",
     rating: "",
   });
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
@@ -138,9 +139,11 @@ function BookReviewListPage() {
     <div>
       <h2>Book Reviews</h2>
       {/* List of reviewed books on card display */}
-      {bookReviews.map((review) => (
-        <BookReviewCard key={review._id} review={review} isAdmin={isAdmin} />
-      ))}
+      <div className="flex flex-row">
+        {bookReviews.map((review) => (
+          <BookReviewCard key={review._id} review={review} />
+        ))}
+      </div>
       {/* Admin form to create a new book review */}
       {isAdmin && (
         <div>

@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import adminAxios from "../api/AdminAuthAPI";
+import { useSelector } from "react-redux";
 
-function BookReviewPage({ isAdmin }) {
+function BookReviewPage() {
   const [bookReview, setBookReview] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { bookId } = useParams();
   const navigate = useNavigate();
+  const isAdmin = useSelector((state) => state.isAdmin.value);
 
   useEffect(() => {
     const fetchBookReview = async () => {
@@ -52,7 +54,7 @@ function BookReviewPage({ isAdmin }) {
   }
 
   return (
-    <div>
+    <div className="w-2/3 mx-auto">
       {bookReview && (
         <div>
           <h2>{bookReview.title}</h2>
