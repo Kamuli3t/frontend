@@ -3,11 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import adminAxios from "../api/AdminAuthAPI";
 
-function BookReviewPage() {
+function BookReviewPage({ isAdmin }) {
   const [bookReview, setBookReview] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false); // Example: Check if the user is an admin
   const { bookId } = useParams();
   const navigate = useNavigate();
 
@@ -28,10 +27,6 @@ function BookReviewPage() {
     };
 
     fetchBookReview();
-
-    // Example: Check if the user is an admin
-    const token = sessionStorage.getItem("token");
-    setIsAdmin(!!token); // Replace with actual auth logic
   }, [bookId]);
 
   const handleDeleteReview = async () => {

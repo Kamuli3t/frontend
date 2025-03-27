@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BookReviewCard from "../components/BookReviewCard";
 import adminAxios from "../api/AdminAuthAPI";
+import { useSelector } from "react-redux";
 
 function BookReviewListPage() {
   const [bookReviews, setBookReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [isAdmin] = useState(true);
+  const isAdmin = useSelector((state) => state.isAdmin.value);
   const [newReview, setNewReview] = useState({
     bookId: "",
     bookData: null,
@@ -138,7 +139,7 @@ function BookReviewListPage() {
       <h2>Book Reviews</h2>
       {/* List of reviewed books on card display */}
       {bookReviews.map((review) => (
-        <BookReviewCard key={review._id} review={review} />
+        <BookReviewCard key={review._id} review={review} isAdmin={isAdmin} />
       ))}
       {/* Admin form to create a new book review */}
       {isAdmin && (

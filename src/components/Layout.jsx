@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom";
+import Nav from "./Nav";
 
 function Layout() {
   return (
-    <>
-      <header>Header here</header>
+    <div className="max-w-[1200px] mx-auto">
+      <Nav />
       <main>
         <Outlet />
       </main>
-      <footer>Footer here</footer>
-    </>
+    </div>
   );
 }
 

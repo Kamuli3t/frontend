@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setIsAdmin } from "../store/isAdminSlice";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -10,6 +12,7 @@ function LoginPage() {
   const [signupUsername, setSignupUsername] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,6 +26,7 @@ function LoginPage() {
       if (response.status === 200) {
         const data = response.data;
         sessionStorage.setItem("token", data.token);
+        dispatch(setIsAdmin(true));
         navigate("/");
       } else {
         throw new Error("Login failed");
